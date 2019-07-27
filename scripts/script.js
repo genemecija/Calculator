@@ -287,11 +287,10 @@ function buttonWasPressed(e) {
     case "equals":
     case "=":
     case "Enter":
-      if (eq.n1 && eq.operation && eq.n2) {
+      if (eq.operation && eq.n2) {
         eq.n2 = Number(eq.n2);
         updateDisplay(calculate(eq.n1, eq.n2, eq.operation));
       } else if (
-        eq.n1 &&
         !eq.operation &&
         !eq.n2 &&
         prevOp.n2 &&
@@ -323,27 +322,26 @@ function buttonWasPressed(e) {
           break;
         }
       }
-
-      if (!eq.n1) {
+      if (eq.n1==null) {
         if (buttonPressed == ".") {
           buttonPressed = "0.";
         }
         eq.n1 = buttonPressed;
         updateDisplay(buttonPressed);
-      } else if (eq.n1 && !eq.operation && String(eq.n1).length < 10) {
+      } else if (!eq.operation && String(eq.n1).length < 10) {
         if (currentDisplay == "0" && buttonPressed != ".") {
           eq.n1 = buttonPressed;
         } else {
           eq.n1 += buttonPressed;
         }
         updateDisplay(eq.n1);
-      } else if (eq.n1 && eq.operation && !eq.n2) {
+      } else if (eq.operation && eq.n2==null) {
         if (buttonPressed == ".") {
           buttonPressed = "0.";
         }
         eq.n2 = buttonPressed;
         updateDisplay(buttonPressed);
-      } else if (eq.n1 && eq.operation && eq.n2 && String(eq.n2).length < 10) {
+      } else if (eq.operation && eq.n2 && String(eq.n2).length < 10) {
         if (currentDisplay == "0" && buttonPressed != ".") {
           eq.n2 = buttonPressed;
         } else {
