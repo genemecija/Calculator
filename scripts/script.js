@@ -38,13 +38,6 @@ const updateDisplay = num => {
     return;
   }
   calcDisplay.textContent = String(num);
-  // if (String(num).indexOf('e') != -1) {
-  //     calcDisplay.textContent = String(num)
-  //     return
-  // } else {
-  //     calcDisplay.textContent = String(Number(num))
-  //     return
-  // }
 };
 const clearPreviousOperation = function() {
   prevOp.n2 = null;
